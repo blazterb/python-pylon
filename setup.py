@@ -46,14 +46,15 @@ pylonExtension = Extension('pylon',['pylon/__init__.pyx',
                                     'pylon/Factory.cpp',
                                     'pylon/DevInfo.cpp',
                                     'pylon/Camera.cpp',
-                                    'pylon/TransportLayer.cpp',
-                                    'pylon/GenApiWrap/INode.cpp',
-                                    'pylon/PyCallback.cpp'],
+                                    'pylon/TransportLayer.cpp',],
                            language="c++",
-                           extra_compile_args=[#"-static",
+			   include_dirs=["/opt/pylon5/include", ],
+                           library_dirs=["/opt/pylon5/lib64", ],
+                           libraries=["pylonbase", "pylonutility", "GenApi_gcc_v3_0_Basler_pylon_v5_0", "GCBase_gcc_v3_0_Basler_pylon_v5_0"],
+                           #extra_compile_args=[#"-static",
                                                #"-fPIC",
                                                #"-std=c++11",
-                                              ]
+                               #               ]
                            )
 
 #FIXME: check how can be know if c++11 is available to be used
